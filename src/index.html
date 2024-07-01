@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Compare hundreds of motorcycles against each other with our intuitive comparison tool. Find specifications, features, and more.">
+    <meta name="keywords"
+        content="compare motorcycles, motorcycle comparison, motorcycle specs, motorcycle features, honda vs kawasaki, kawasaki vs yamaha, yamaha vs suzuki, suzuki vs harley davidson, harley davidson vs yamaha, yamaha vs harley davidson, harley davidson vs suzuki, suzuki vs honda">
+    <meta name="author" content="Compare Motorcycles">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:title" content="Compare Motorcycles">
+    <meta property="og:description"
+        content="Compare hundreds of motorcycles against each other with our intuitive comparison tool.">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourwebsite.com">
+    <meta property="twitter:title" content="Compare Motorcycles">
+    <meta property="twitter:description"
+        content="Compare hundreds of motorcycles against each other with our intuitive comparison tool.">
+    <meta property="twitter:image" content="https://www.yourwebsite.com/images/twitter-image.jpg">
+
+    <title>Compare Motorcycles</title>
+
+    <!-- Normalize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/tablet.css">
+    <link rel="stylesheet" href="css/desktop.css">
+</head>
+
+<body>
+
+    <div>
+        <h1>Compare Motorcycles</h1>
+        <p>Start comparing hundreds of motorcycles today!</p>
+    </div>
+
+    <a id="tryItButton" class="rounded-max" href="#addButton">Try It</a>
+
+    <h1>Lets Compare</h1>
+
+    <div class="inputContainer">
+        <input type="text" id="input-make" class="rounded-max input" placeholder="make">
+        <input type="text" id="input-model" class="rounded-max input" placeholder="model">
+        <input type="integer" id="input-year" class="rounded-max input" placeholder="year">
+    </div>
+
+    <button id="addButton" class="rounded-max">Add+</button>
+
+    <div id="compareContainer">
+
+        <div id="motorcycleCardOne" class="card"></div>
+        <div id="motorcycleCardTwo" class="card"></div>
+        <div id="motorcycleCardThree" class="card"></div>
+        <div id="motorcycleCardFour" class="card"></div>
+
+    </div>
+
+    <div id="geminiContainer" class="rounded-max">
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M16 8.016A8.522 8.522 0 008.016 16h-.032A8.521 8.521 0 000 8.016v-.032A8.521 8.521 0 007.984 0h.032A8.522 8.522 0 0016 7.984v.032z" fill="url(#prefix__paint0_radial_980_20147)"/><defs><radialGradient id="prefix__paint0_radial_980_20147" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)"><stop offset=".067" stop-color="#9168C0"/><stop offset=".343" stop-color="#5684D1"/><stop offset=".672" stop-color="#1BA1E3"/></radialGradient></defs></svg>
+    </div>
+    
+    <script src="main.js" type="module"></script>
+    <!-- <script src="./utils/geminiSummary.js" type="module"></script> -->
+</body>
+
+</html>

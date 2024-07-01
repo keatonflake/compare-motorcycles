@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --dark: #1C1c21;
+    --light: #FFFDFD;
+    --grey: #343434;
+    --red: #902923;
+    --orange: #FFA552;
+
+    --font-display: 'Playfair Display', serif;
+    --font-text: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+h1 {
+    font-family: var(--font-display);
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.rounded-max {
+    border-radius: 30px;
+}
+
+#tryItButton {
+    border: none;
+    text-align: center;
+    background-color: var(--red);
+    color: var(--light);
+    padding: 5px 20px;
+}
+
+.input {
+    border: 2px solid var(--orange);
+    text-align: center;
+    color: var(--light);
+    background-color: var(--grey);
+    margin: 5px auto;
+}
+
+#addButton {
+    border: none;
+    text-align: center;
+    background-color: var(--orange);
+    color: var(--light);
+    padding: 5px 10px;
+}
+
+#motorcycleDetails {
+    font-family: var(--font-text);
+    color: var(--light);
+    background-color: var(--grey);
+    list-style-type: none;   
+}
+
+
+.card {
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#motorcycleHeader {
+    display: grid;
+    grid-template-columns: 30% 15% 40% 15%;
+    grid-template-rows: repeat(1fr, 5);
+    font-family: var(--font-display);
+    color: var(--light);
+    background-color: var(--grey);
+    padding: 2vmin;
+}
+
+#imageContainer {
+    grid-column: 1/5;
+    grid-row: 3/4;
+}
+
+#imageContainer img {
+    height: 100%;
+    width: 100%;
+}
+
+#motorcycleHeader h2, #motorcycleHeader h3 {
+    grid-column: 1/5;
+}
+
+#motorcycleHeader h2 {
+    font-size: 8vmin;
+    grid-row: 1/2;
+}
+
+#motorcycleHeader h3 {
+    font-size: 8vmin;
+    grid-row: 2/3;
+    margin-left: 1vmin;
+}
+
+#previousButton svg, #nextButton svg {
+    width: 10vmin;
+    height: 10vmin;
+}
+
+#previousButton, #nextButton {
+    border: none;
+    background-color: transparent;
+    color: var(--orange);
+}
+
+#previousButton {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#nextButton{
+    grid-column: 4/5;
+    grid-row: 2/3;
+}
+
+#motorcycleHeader p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    font-size: 5vmin;
+    margin: auto auto;
+}
+
+#motorcycleHeader button {
+    justify-content: center;
+    align-items: center;
+}
+
+#detailsButton {
+    background-color: var(--orange);
+    grid-column: 1/5;
+    grid-row: 4/5;
+    /* border-top: 2px solid var(--light); */
+    border-top: var(--dark);
+
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+#detailsButton svg {
+    width: 8vmin;
+    height: 8vmin;
+}
+
+#motorcycleDetails {
+    display: none;
+    list-style: none;
+}
+
+#geminiContainer {
+    max-width: 85vw;
+    margin: 1em auto;
+    background-color: var(--grey);
+    padding: 2vmin;
+}
+
+#geminiContainer svg {
+    width: 10vmin;
+    height: 10vmin;
+}
