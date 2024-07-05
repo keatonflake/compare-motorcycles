@@ -16,9 +16,9 @@ export async function getMotorcycleData(make, model, year) {
     try {
         const response = await fetch(URL + `?make=${make}&model=${model}&year=${year}`, options);
         const data = await response.json();
-        data.forEach(object => {
-            console.log(object);
-        });
+        // data.forEach(object => {
+        //     console.log(object);
+        // });
         motorcycles.push(data); // add data;
         setLocalStorage(`motorcycles`, motorcycles);
         // displayMotorcycle(currentIndex); 

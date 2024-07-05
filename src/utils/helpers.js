@@ -19,8 +19,13 @@ export function validateSearch(make, model, year) {
 
 export function getStorageCount() {
 
+    // if local storage does not exist, return 0
+    if (getLocalStorage("motorcycles") == null) {
+        return;
+    }
+
     if (getLocalStorage("motorcycles").length == null) {
-        return 0;
+        return;
     }
     else if (getLocalStorage("motorcycles").length < 1){
         return 0;

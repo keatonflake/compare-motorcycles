@@ -5,7 +5,7 @@ import { validateSearch, getStorageCount } from "./utils/helpers";
 const addButton = document.getElementById("addButton");
 addButton.addEventListener("click", () => {
 
-    if (getCardCount() === 4) {
+    if (getStorageCount() === 4) {
         alert("Limit of 4 motorcycles reached");
         return;
     }
