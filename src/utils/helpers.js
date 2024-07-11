@@ -30,9 +30,9 @@ export function getStorageCount() {
     else if (getLocalStorage("motorcycles").length < 1){
         return 0;
     }
-    else if (getLocalStorage("motorcycles").length > 4) {
-        alert("Limit of 4 motorcycles reached");
-    }
+    // else if (getLocalStorage("motorcycles").length > 4) {
+    //     alert("Limit of 4 motorcycles reached");
+    // }
     else {
         return getLocalStorage("motorcycles").length;
     }

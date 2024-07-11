@@ -34,14 +34,14 @@ h1 {
 }
 
 .body-title {
-    font-size: 3em;
+    font-size: 9vmin;
     font-family: var(--font-display);
     text-align: center;
-    margin-top: 20px;
+    margin-top: 20px 5px;
 }
 
 .body-subtitle {
-    font-size: 1.5em;
+    font-size: 5vmin;
     text-align: center;
 }
 
@@ -55,6 +55,7 @@ h1 {
 #tryItButton {
     border: none;
     text-align: center;
+    font-size: 4vmin;
     background-color: var(--red);
     color: var(--light);
     padding: 5px 20px;
@@ -70,8 +71,9 @@ h1 {
 
 .inputContainer input {
     width: 70vw;
-    height: 40px;
+    height: 50px;
     border: 2px solid var(--orange);
+    font-size: 4vmin;
     text-align: center;
     color: var(--light);
     background-color: var(--grey);
@@ -94,6 +96,7 @@ h1 {
     text-align: center;
     background-color: var(--orange);
     color: var(--light);
+    font-size: 4vmin;
     padding: 5px 10px;
     margin: 10px 0px;
 }
@@ -224,6 +227,15 @@ h1 {
     display: none;
     list-style: none;
     padding: 4vmin;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 50vh;
+    font-size: 5vmin;
+}
+
+#geminiContainer svg {
+    width: 7vmin;
+    height: 7vmin;
 }
 
 .geminiContainer {
@@ -237,50 +249,52 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: all 0.3s ease; /* Add transition for smooth animation */
+    transition: all 0.3s ease;
+}
+
+.geminiContainer h1 {
+    font-size: 5vmin;
 }
 
 .expanded {
     z-index: 1000;
     position: absolute; /* or position: fixed; */
-    top: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
     width: 85vw;
     height: 80vh;
     background-color: var(--grey);
-    padding: 5vmin;
+    padding: 1vmin;
     border: 2px solid var(--light);
     display: grid;
     grid-template-columns: 15% 85%;
-    grid-template-rows: 6% 94%;
+    grid-template-rows: 9% 91%;
     transition: all 0.3s ease; /* Add transition for smooth animation */
 }
 
 .expanded svg {
     grid-column: 1;
     grid-row: 1;
+    margin-left: 4vmin;
+    margin-top: 2vmin;
 }
 
 .expanded h1 {
     grid-column: 2;
     grid-row: 1;
+    font-size: 6vmin;
+    color: var(--light);
+    border-bottom: 1px solid var(--light);
+    font-style: italic;
+    margin-top: 2vmin;
 }
 
 .expanded p {
     grid-column: 1/ span 2;
     grid-row: 2;
-    margin: 1em;
-
-}
-
-#geminiContainer svg {
-    width: 7vmin;
-    height: 7vmin;
-}
-
-#geminiContainer h1 {
-    font-size: 4vmin;
-    font-style: italic;
-    margin: 0;
+    padding: 0 2vmin 5vmin 2vmin;
+    font-size: 5vmin;
 }

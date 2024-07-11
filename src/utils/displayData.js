@@ -1,5 +1,5 @@
 import { MotorcycleCard } from "./MotorcycleCard.js";
-import { getLocalStorage, setLocalStorage} from "./helpers.js";
+import { getLocalStorage, setLocalStorage } from "./helpers.js";
 
 export function displayAllCards() {
   let data = getLocalStorage("motorcycles");
@@ -11,14 +11,16 @@ export function displayAllCards() {
   }
 
   for (let i = 0; i < data.length; i++) {
-    // console.log(data[i]);
+    // console.log(data)
+    // console.log(i);
+    // console.log(data[i][i]);
     let motorcycleCard = new MotorcycleCard(data, i);
     motorcycleCard.createMotorcycleCard();
   }
 }
 
-export function displayNewCard(){
-  let data = getLocalStorage("motorcycles");
-  let motorcycleCard = new MotorcycleCard(data, i);
-  motorcycleCard.createMotorcycleCard();
-}
+// export function displayNewCard() {
+//   let data = getLocalStorage("motorcycles");
+//   let motorcycleCard = new MotorcycleCard(data, data.length);
+//   motorcycleCard.createMotorcycleCard();
+// }

@@ -1,14 +1,14 @@
-import { displayAllCards, displayNewCard } from "./utils/displayData";
+import { displayAllCards } from "./utils/displayData";
 import { getMotorcycleData } from "./utils/externalServices/motorcycleDataAPI";
 import { validateSearch, getStorageCount } from "./utils/helpers";
 
 const addButton = document.getElementById("addButton");
 addButton.addEventListener("click", () => {
 
-    if (getStorageCount() === 4) {
-        alert("Limit of 4 motorcycles reached");
-        return;
-    }
+    // if (getStorageCount() === 4) {
+    //     alert("Limit of 4 motorcycles reached");
+    //     return;
+    // }
 
     let make = document.getElementById("input-make").value;
     let model = document.getElementById("input-model").value;
@@ -21,8 +21,15 @@ addButton.addEventListener("click", () => {
         return;
     }
     else {
-        getMotorcycleData(make, model, year);
-        displayNewCard();
+        if (getMotorcycleData(make, model, year)) {
+            // displayNewCard();
+            displayAllCards();
+        }
+        else {
+            alert("Data not found");
+        }
+        // getMotorcycleData(make, model, year);
+        // displayNewCard();
     }
 });
 

@@ -9,11 +9,13 @@ export class MotorcycleCard {
     this.cardStorageCount = getStorageCount();
     // this.cardCount = this.cardCount;
     this.motorcycleTitleString = "";
+    this.cardPlacement;
   }
 
   createMotorcycleCard() {
-    let motorcycle = this.data[this.dataIndex][this.editionIndex];
-    let cardPlacement;
+    let motorcycle = this.data[this.dataIndex][this.editionIndex]
+
+    // let cardPlacement;
     let motorcycleCardOne = document.getElementById("motorcycleCardOne");
     let motorcycleCardTwo = document.getElementById("motorcycleCardTwo");
     let motorcycleCardThree = document.getElementById("motorcycleCardThree");
@@ -21,20 +23,20 @@ export class MotorcycleCard {
 
     switch (this.dataIndex) {
       case 0:
-        cardPlacement = motorcycleCardOne;
-        cardPlacement.classList.remove("hide");
+        this.cardPlacement = motorcycleCardOne;
+        this.cardPlacement.classList.remove("hide");
         break;
       case 1:
-        cardPlacement = motorcycleCardTwo;
-        cardPlacement.classList.remove("hide");
+        this.cardPlacement = motorcycleCardTwo;
+        this.cardPlacement.classList.remove("hide");
         break;
       case 2:
-        cardPlacement = motorcycleCardThree;
-        cardPlacement.classList.remove("hide");
+        this.cardPlacement = motorcycleCardThree;
+        this.cardPlacement.classList.remove("hide");
         break;
       case 3:
-        cardPlacement = motorcycleCardFour;
-        cardPlacement.classList.remove("hide");
+        this.cardPlacement = motorcycleCardFour;
+        this.cardPlacement.classList.remove("hide");
         break;
     }
 
@@ -71,13 +73,13 @@ export class MotorcycleCard {
 
     this.motorcycleTitleString = `${motorcycle.make} ${motorcycle.model} ${motorcycle.year}`;
 
-    // getMotorcycleImages(this.motorcycleTitleString).then((url) => {
-    //   motorcycleImage.src = url;
-    // });
+    getMotorcycleImages(this.motorcycleTitleString).then((url) => {
+      motorcycleImage.src = url;
+    });
 
     imageContainer.appendChild(motorcycleImage);
 
-    cardPlacement.appendChild(motorcycleHeader);
+    this.cardPlacement.appendChild(motorcycleHeader);
     motorcycleHeader.appendChild(title);
     motorcycleHeader.appendChild(year);
     motorcycleHeader.appendChild(previousButton);
@@ -86,10 +88,10 @@ export class MotorcycleCard {
     motorcycleHeader.appendChild(imageContainer);
     motorcycleHeader.appendChild(detailsButton);
     motorcycleHeader.appendChild(trashButton);
-    cardPlacement.appendChild(motorcycleDetails);
+    this.cardPlacement.appendChild(motorcycleDetails);
 
-    if (cardPlacement.classList.contains("hide")) {
-      cardPlacement.classList.remove("hide");
+    if (this.cardPlacement.classList.contains("hide")) {
+      this.cardPlacement.classList.remove("hide");
     }
 
     for (let key in motorcycle) {
@@ -142,7 +144,7 @@ export class MotorcycleCard {
     });
 
     trashButton.addEventListener("click", () => {
-      this.deleteMotorcycleCard(cardPlacement);
+      this.deleteMotorcycleCard();
     });
 
     detailsButton.addEventListener("click", () => {
@@ -159,7 +161,7 @@ export class MotorcycleCard {
   updateStorageOfDisplayedData() {
     let storageArray = getLocalStorage("displayed-motorcycles") || [];
     let displayedData = this.data[this.dataIndex][this.editionIndex];
-  
+
     for (let motorcycle of storageArray) {
       if (motorcycle.model === displayedData.model) {
         return;
@@ -167,26 +169,21 @@ export class MotorcycleCard {
     }
     // If not found, push the new motorcycle to storageArray
     storageArray.push(displayedData);
-  
+
     setLocalStorage("displayed-motorcycles", storageArray);
   }
 
-  emptyStorageOfDisplayedData() {
-    setLocalStorage("displayed-motorcycles", []);
-  }
-  
+  deleteMotorcycleCard() {
+    let allMotorcycleData = getLocalStorage("motorcycles");
+    let displayedMotorcycleData = getLocalStorage("displayed-motorcycles");
 
-  deleteMotorcycleCard(cardPlacement) {
-    let data = getLocalStorage("motorcycles");
+    allMotorcycleData.splice(this.dataIndex, 1);
+    setLocalStorage("motorcycles", allMotorcycleData);
 
-    console.log(`old data: ${data}`);
+    displayedMotorcycleData.splice(this.dataIndex, 1);
+    setLocalStorage("displayed-motorcycles", displayedMotorcycleData);
 
-    data.splice(this.dataIndex, 1);
-    setLocalStorage("motorcycles", data);
-
-    console.log(`new data: ${data}`);
-
-    cardPlacement.classList.add("hide");
+    this.cardPlacement.classList.add("hide");
   }
 
   updateMotorcycleCard(
@@ -198,11 +195,10 @@ export class MotorcycleCard {
     detailsButton,
     motorcycleImage,
     motorcycleDetails,
-    trashButton,
-    cardPlacement
+    trashButton
   ) {
-    if (cardPlacement.classList.contains("hide")) {
-      cardPlacement.classList.remove("hide");
+    if (this.cardPlacement.classList.contains("hide")) {
+      this.cardPlacement.classList.remove("hide");
     }
 
     let motorcycle = this.data[this.dataIndex][this.editionIndex];
@@ -216,9 +212,9 @@ export class MotorcycleCard {
     trashButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg>`;
 
     this.motorcycleTitleString = `${motorcycle.make} ${motorcycle.model} ${motorcycle.year}`;
-    // getMotorcycleImages(this.motorcycleTitleString).then((url) => {
-    //   motorcycleImage.src = url;
-    // });
+    getMotorcycleImages(this.motorcycleTitleString).then((url) => {
+      motorcycleImage.src = url;
+    });
 
     motorcycleDetails.innerHTML = "";
     for (let key in motorcycle) {

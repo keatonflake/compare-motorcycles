@@ -42,13 +42,15 @@ async function displaySummary() {
     let motorcycle4 = JSON.stringify(data[3] || "");
 
     let prompt = `Here are the names and specs for 1 or more motorcycles. If there is informformation for more than one motorcycle,
-      please give a vwet short comparison between them and why an individual might choose one over the other.
-      If data for only one motorcycle is provided, please give a very short summary of that motorcycle
+      please give a comparison between them and why an individual might choose one over the other.
+      If data for only one motorcycle is provided, please give a summary of that motorcycle
       and why an individual would choose it:
       ${motorcycle1}
       ${motorcycle2}
       ${motorcycle3}
-      ${motorcycle4}`;
+      ${motorcycle4}
+      
+      Keep the summary under 175 words. Always start with the name or names of the motorcycles.`;
 
     summary = await dataSummary(prompt);
   }
