@@ -7,6 +7,10 @@ export function getLocalStorage(key) {
     // console.log(JSON.parse(localStorage.getItem(key)));
 }
 
+export function removeLocalStorage(key) {
+    localStorage.removeItem(key);
+}
+
 export function validateSearch(make, model, year) {
 
     if (make === "" || model === "" || year === "") {

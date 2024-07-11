@@ -3,6 +3,9 @@ import { getLocalStorage, setLocalStorage } from "./helpers.js";
 
 export function displayAllCards() {
   let data = getLocalStorage("motorcycles");
+  let newArray = [];
+
+  setLocalStorage("displayed-motorcycles", []);
 
   if (data == null) {
     console.log("Local storage is empty");
@@ -11,12 +14,13 @@ export function displayAllCards() {
   }
 
   for (let i = 0; i < data.length; i++) {
-    // console.log(data)
-    // console.log(i);
-    // console.log(data[i][i]);
     let motorcycleCard = new MotorcycleCard(data, i);
     motorcycleCard.createMotorcycleCard();
+
+    newArray.push(data[i][0]);
   }
+
+  setLocalStorage("displayed-motorcycles", newArray);
 }
 
 // export function displayNewCard() {

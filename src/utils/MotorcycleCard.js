@@ -1,5 +1,10 @@
 import { getMotorcycleImages } from "./externalServices/googleImageAPI";
-import { getStorageCount, getLocalStorage, setLocalStorage } from "./helpers";
+import {
+  getStorageCount,
+  getLocalStorage,
+  setLocalStorage,
+  removeLocalStorage,
+} from "./helpers";
 
 export class MotorcycleCard {
   constructor(data, dataIndex) {
@@ -13,7 +18,10 @@ export class MotorcycleCard {
   }
 
   createMotorcycleCard() {
-    let motorcycle = this.data[this.dataIndex][this.editionIndex]
+    let motorcycle = this.data[this.dataIndex][this.editionIndex];
+
+    setLocalStorage("displayed-motorcycles", motorcycle);
+    this.updateStorageOfDisplayedData();
 
     // let cardPlacement;
     let motorcycleCardOne = document.getElementById("motorcycleCardOne");
@@ -73,9 +81,9 @@ export class MotorcycleCard {
 
     this.motorcycleTitleString = `${motorcycle.make} ${motorcycle.model} ${motorcycle.year}`;
 
-    getMotorcycleImages(this.motorcycleTitleString).then((url) => {
-      motorcycleImage.src = url;
-    });
+    // getMotorcycleImages(this.motorcycleTitleString).then((url) => {
+    //   motorcycleImage.src = url;
+    // });
 
     imageContainer.appendChild(motorcycleImage);
 
@@ -159,31 +167,53 @@ export class MotorcycleCard {
   }
 
   updateStorageOfDisplayedData() {
-    let storageArray = getLocalStorage("displayed-motorcycles") || [];
+    let currentStorage = getLocalStorage("displayed-motorcycles") || [];
+    let newArray = [];
     let displayedData = this.data[this.dataIndex][this.editionIndex];
 
-    for (let motorcycle of storageArray) {
-      if (motorcycle.model === displayedData.model) {
-        return;
-      }
-    }
-    // If not found, push the new motorcycle to storageArray
-    storageArray.push(displayedData);
+    newArray.push(displayedData);
 
-    setLocalStorage("displayed-motorcycles", storageArray);
+    // if there is nothing in local storage, just add new data
+    if (currentStorage.length === 0) {
+      setLocalStorage("displayed-motorcycles", newArray);
+      return;
+    }
+
+    // if there is data in local storage add it to new array as well as new data
+    newArray.push(currentStorage);
+    newArray.push(displayedData);
+
+    setLocalStorage("displayed-motorcycles", newArray);
   }
 
   deleteMotorcycleCard() {
     let allMotorcycleData = getLocalStorage("motorcycles");
     let displayedMotorcycleData = getLocalStorage("displayed-motorcycles");
 
-    allMotorcycleData.splice(this.dataIndex, 1);
-    setLocalStorage("motorcycles", allMotorcycleData);
+    console.log(this.dataIndex);
+    // if there is only one item in local storage, remove it
+    if (getLocalStorage("motorcycles").length < 2) {
+      removeLocalStorage("displayed-motorcycles");
+      removeLocalStorage("motorcycles");
+      this.cardPlacement.classList.add("hide");
+      return;
+    } 
+    // if there is more than one item in local storage, remove one
+    else {
+      allMotorcycleData.splice(this.dataIndex, 1);
+      setLocalStorage("motorcycles", allMotorcycleData);
 
-    displayedMotorcycleData.splice(this.dataIndex, 1);
-    setLocalStorage("displayed-motorcycles", displayedMotorcycleData);
+      displayedMotorcycleData.splice(this.dataIndex, 1);
+      setLocalStorage("displayed-motorcycles", displayedMotorcycleData);
 
-    this.cardPlacement.classList.add("hide");
+      this.cardPlacement.classList.add("hide");
+    }
+
+    // if there are no motorcycles in local storage, remove displayed-motorcycles storage
+
+    if (getLocalStorage("motorcycles").length < 1) {
+      removeLocalStorage("displayed-motorcycles");
+    }
   }
 
   updateMotorcycleCard(
@@ -212,8 +242,12 @@ export class MotorcycleCard {
     trashButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg>`;
 
     this.motorcycleTitleString = `${motorcycle.make} ${motorcycle.model} ${motorcycle.year}`;
-    getMotorcycleImages(this.motorcycleTitleString).then((url) => {
-      motorcycleImage.src = url;
+    // getMotorcycleImages(this.motorcycleTitleString).then((url) => {
+    //   motorcycleImage.src = url;
+    // });
+
+    trashButton.addEventListener("click", () => {
+      this.deleteMotorcycleCard();
     });
 
     motorcycleDetails.innerHTML = "";
