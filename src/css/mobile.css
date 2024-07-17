@@ -75,7 +75,7 @@ h1 {
     margin: 10px auto;
     background-size: cover;
     background-position: center;
-    background-image: url(../motorcycle_mobile.jpg);
+    background-image: url(../../public/motorcycle_mobile.jpg);
 }
 
 .inputContainer {
