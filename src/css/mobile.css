@@ -75,7 +75,7 @@ h1 {
     margin: 10px auto;
     background-size: cover;
     background-position: center;
-    background-image: url(../public/motorcycle_mobile.jpg);
+    background-image: url('https://compare-motorcycles.onrender.com/assets/motorcycle_mobile-B1xuxxSp.jpg');
 }
 
 .inputContainer {
