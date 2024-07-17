@@ -3,6 +3,7 @@ import { dataSummary } from "./externalServices/geminiAPI.js";
 
 const geminiButton = document.getElementById("geminiContainer");
 const summaryParagraph = document.getElementById("summaryParagraph");
+const closeButton = document.querySelector(".closeButton");
 
 // when gemini button is clicked the container grows vertically
 // and the summary appears
@@ -11,11 +12,13 @@ geminiButton.addEventListener("click", () => {
   if (geminiButton.classList.contains("expanded")) {
     geminiButton.classList.remove("expanded");
     summaryParagraph.classList.add("hide");
+    closeButton.classList.add("hide");
     geminiButton.classList.add("geminiContainer");
   } else {
     geminiButton.classList.add("expanded");
     geminiButton.classList.remove("geminiContainer");
     summaryParagraph.classList.remove("hide");
+    closeButton.classList.remove("hide");
 
     setTimeout(() => {
       window.scrollTo({

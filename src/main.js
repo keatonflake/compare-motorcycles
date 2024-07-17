@@ -1,6 +1,6 @@
 import { displayAllCards } from "./utils/displayData";
 import { getMotorcycleData } from "./utils/externalServices/motorcycleDataAPI";
-import { validateSearch, getStorageCount, removeLocalStorage } from "./utils/helpers";
+import { validateSearch, getStorageCount } from "./utils/helpers";
 
 const addButton = document.getElementById("addButton");
 addButton.addEventListener("click", async () => {
@@ -22,15 +22,12 @@ addButton.addEventListener("click", async () => {
     } else {
         const dataFetched = await getMotorcycleData(make, model, year);
         if (dataFetched) {
-            displayAllCards();
+            location.reload();
         } else {
             console.log("Data not fetched");
         }
     }
 });
-
-removeLocalStorage("displayed-motorcycles");
-removeLocalStorage("motorcycles");
 
 getStorageCount();
 

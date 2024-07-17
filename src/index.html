@@ -16,7 +16,7 @@
     <meta property="og:title" content="Compare Motorcycles">
     <meta property="og:description"
         content="Compare hundreds of motorcycles against each other with our intuitive comparison tool.">
-    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg">
+    <meta property="og:image" content="../public/assets/motorcycle_mobile.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -35,9 +35,9 @@
 
 
     <!-- Your custom CSS -->
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/tablet.css">
-    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/mobile.css" media="only screen and (max-width: 767px)">
+    <link rel="stylesheet" href="css/tablet.css" media="only screen and (min-width: 768px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="css/desktop.css" media="only screen and (min-width: 1024px)">
 </head>
 
 <body>
@@ -46,12 +46,15 @@
         <h1 class="body-title">Compare Motorcycles</h1>
         <p class="body-subtitle">Compare the specs of hundreds of motorcycles!</p>
     </div>
-    <div class="actionButtonContainer">
-        <a id="tryItButton" class="rounded-max" href="#addButton">Try It</a>
+    <div id="hero" class="rounded-max">
+        <div class="actionButtonContainer">
+        <a id="tryItButton" class="rounded-max" href="#compareTitle">Try It</a>
     </div>
+</div>
+    
 
     <div class="inputContainer">
-        <h1>Lets Compare</h1>
+        <h1 id="compareTitle">Lets Compare</h1>
         <h3>Enter the details of your bike below</h3>
         <p>*Motorcycle year goes up to 2022</p>
         <input type="text" id="input-make" class="rounded-max input" placeholder="make" required>
@@ -85,6 +88,7 @@
             </defs>
         </svg>
         <h1>Gemini Summary</h1>
+        <h3 class="closeButton hide">X</h3>
         <br>
         <p id="summaryParagraph"></p>
     </div>

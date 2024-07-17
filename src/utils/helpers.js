@@ -3,8 +3,16 @@ export function setLocalStorage(key, value) {
 }
 
 export function getLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key));
-    // console.log(JSON.parse(localStorage.getItem(key)));
+    if (localStorage.getItem(key) === "" || localStorage.getItem(key) === []) {
+        return [];
+    }
+    else {
+        return JSON.parse(localStorage.getItem(key));
+    }
+}
+
+export function emptyLocalStorage(key) {
+    localStorage.setItem(key, JSON.stringify([]));
 }
 
 export function removeLocalStorage(key) {
@@ -40,4 +48,12 @@ export function getStorageCount() {
     else {
         return getLocalStorage("motorcycles").length;
     }
+}
+
+export function hideAllCards() {
+    console.log("Hiding all cards");
+    let allCards = document.querySelectorAll(".card");
+    allCards.forEach((card) => {
+        card.classList.add("hide");
+    });
 }

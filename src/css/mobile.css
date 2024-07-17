@@ -11,6 +11,10 @@
     --font-text: 'Noto Sans JP', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     font-family: var(--font-text);
     background-color: var(--dark);
@@ -37,7 +41,7 @@ h1 {
     font-size: 9vmin;
     font-family: var(--font-display);
     text-align: center;
-    margin-top: 20px 5px;
+    margin-top: 3vh;
 }
 
 .body-subtitle {
@@ -48,17 +52,30 @@ h1 {
 .actionButtonContainer{
     display: flex;
     justify-content: center;
-    margin: 20px auto;
+    margin: auto auto;
     width: 100%;
 }
 
 #tryItButton {
-    border: none;
+    border: 3px solid var(--light);
     text-align: center;
-    font-size: 4vmin;
-    background-color: var(--red);
+    font-size: 6vmin;
+    background-color: var(--orange);
     color: var(--light);
-    padding: 5px 20px;
+    padding: 5px 30px;
+    box-shadow: 7px 7px var(--grey);
+}
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 90vw;
+    height: 80vh;
+    margin: 10px auto;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../../public/assets/motorcycle_mobile.jpg);
 }
 
 .inputContainer {
@@ -67,6 +84,17 @@ h1 {
     margin: 20px auto;
     width: 100%;
     max-width: 80vw;
+}
+
+.inputContainer h1 {
+    font-size: 9vmin;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--orange);
+}
+
+.inputContainer h3{
+    font-family: var(--font-text);
+    font-size: 5vmin;
 }
 
 .inputContainer input {
@@ -78,11 +106,6 @@ h1 {
     color: var(--light);
     background-color: var(--grey);
     margin: 5px;
-}
-
-.inputContainer h3{
-    font-family: var(--font-text);
-    font-size: 5vmin;
 }
 
 .inputContainer p {
@@ -258,10 +281,10 @@ h1 {
 
 .expanded {
     z-index: 1000;
-    position: absolute; /* or position: fixed; */
+    position: fixed; /* or position: fixed; */
     overflow-y: scroll;
     box-sizing: border-box;
-    top: 50%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 85vw;
@@ -270,7 +293,7 @@ h1 {
     padding: 1vmin;
     border: 2px solid var(--light);
     display: grid;
-    grid-template-columns: 15% 85%;
+    grid-template-columns: 15% 75% 10%;
     grid-template-rows: 9% 91%;
     transition: all 0.3s ease; /* Add transition for smooth animation */
 }
@@ -280,6 +303,14 @@ h1 {
     grid-row: 1;
     margin-left: 4vmin;
     margin-top: 2vmin;
+}
+
+.expanded .closeButton {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 6vmin;
+    text-align: center;
+    color: var(--orange);
 }
 
 .expanded h1 {

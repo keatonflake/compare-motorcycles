@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --dark: #1C1c21;
+    --light: #FFFDFD;
+    --grey: #343434;
+    --red: #902923;
+    --orange: #FFA552;
+
+    --font-display: 'Playfair Display', serif;
+    --font-text: 'Noto Sans JP', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+h1 {
+    font-family: var(--font-display);
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.rounded-max {
+    border-radius: 30px;
+}
+
+.hide {
+    display: none;
+}
+
+.body-title {
+    font-size: 6vmin;
+    font-family: var(--font-display);
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.body-subtitle {
+    font-size: 5vmin;
+    text-align: center;
+}
+
+.actionButtonContainer{
+    display: flex;
+    justify-content: center;
+    margin: auto auto;
+    width: 100%;
+}
+
+#tryItButton {
+    border: 3px solid var(--light);
+    text-align: center;
+    font-size: 4vmin;
+    background-color: var(--orange);
+    color: var(--light);
+    padding: 5px 30px;
+    margin-top: 10vh;
+    /* box-shadow: 7px 7px var(--grey); */
+    text-decoration: none;
+}
+
+#tryItButton:hover {
+    background-color: var(--light);
+    color: var(--orange);
+    border: 3px solid var(--orange);
+}
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 95vw;
+    height: 40vh;
+    margin: 10px auto;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../../public/assets/motorcycle_desktop.jpg);
+}
+
+.inputContainer {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 80vw;
+}
+
+.inputContainer h1 {
+    font-size: 7vmin;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--orange);
+}
+
+.inputContainer h3{
+    font-family: var(--font-text);
+    font-size: 4vmin;
+}
+
+.inputContainer input {
+    width: 50vw;
+    height: 6vmin;
+    border: 2px solid var(--orange);
+    font-size: 3.5vmin;
+    text-align: center;
+    color: var(--light);
+    background-color: var(--grey);
+    margin: 5px;
+}
+
+.inputContainer p {
+    font-family: var(--font-text);
+    font-style: italic;
+    font-size: 3vmin;
+}
+
+#addButton {
+    border: none;
+    text-align: center;
+    background-color: var(--orange);
+    color: var(--light);
+    font-size: 3vmin;
+    padding: 5px 10px;
+    margin: 10px 0px;
+}
+
+#addButton:hover {
+    background-color: var(--light);
+    color: var(--orange);
+    border: 1px solid var(--orange);
+}
+
+#compareContainer {
+    width: 70vw;
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.card {
+    /* flex-basis: 25%;
+    flex-grow: 1; */
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--dark);
+}
+
+#motorcycleDetails {
+    font-family: var(--font-text);
+    color: var(--light);
+    background-color: var(--grey);
+    list-style-type: none;   
+}
+
+#motorcycleHeader {
+    display: grid;
+    grid-template-columns: 30% 15% 40% 15%;
+    grid-template-rows: repeat(1fr, 5);
+    font-family: var(--font-display);
+    color: var(--light);
+    background-color: var(--grey);
+    padding: 2vmin;
+}
+
+#imageContainer {
+    grid-column: 1/5;
+    grid-row: 3/4;
+}
+
+#imageContainer img {
+    height: 100%;
+    width: 100%;
+}
+
+#motorcycleHeader h2, #motorcycleHeader h3 {
+    grid-column: 1/5;
+}
+
+#motorcycleHeader h2 {
+    height: 6vh;
+    font-size: 3.5vmin;
+    grid-column: 1/4;
+    grid-row: 1/2;
+}
+
+#motorcycleHeader h3 {
+    font-size: 3vmin;
+    grid-row: 2/3;
+    margin-left: 1vmin;
+}
+
+#previousButton svg, #nextButton svg {
+    width: 5vmin;
+    height: 5vmin;
+}
+
+#previousButton, #nextButton {
+    border: none;
+    background-color: transparent;
+    color: var(--orange);
+}
+
+#previousButton {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#nextButton{
+    grid-column: 4/5;
+    grid-row: 2/3;
+}
+
+#motorcycleHeader p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    font-size: 2vmin;
+    margin: auto auto;
+}
+
+#motorcycleHeader button {
+    justify-content: center;
+    align-items: center;
+}
+
+#detailsButton {
+    background-color: var(--orange);
+    grid-column: 1/5;
+    grid-row: 4/5;
+    margin-top: 5px;
+}
+
+#detailsButton svg {
+    width: 5vmin;
+    height: 5vmin;
+}
+
+#trashButton {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    background-color: var(--grey);
+    border: none;
+}
+
+#trashButton svg {
+    width: 4vmin;
+    height: 4vmin;
+    color: var(--red);
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+#motorcycleDetails {
+    display: none;
+    list-style: none;
+    padding: 4vmin;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 50vh;
+    font-size: 2vmin;
+}
+
+#geminiContainer svg {
+    width: 7vmin;
+    height: 7vmin;
+}
+
+.geminiContainer {
+    width: 60vw;
+    height: 8vmin;
+    background-color: var(--grey);
+    padding: 5vmin;
+    border: 2px solid var(--light);
+    margin: 0 auto 5vmin auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.geminiContainer:hover {
+    transform: scale(1.2);
+}
+
+.geminiContainer h1 {
+    font-size: 5vmin;
+}
+
+.expanded {
+    z-index: 1000;
+    position: fixed; /* or position: fixed; */
+    overflow-y: scroll;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85vw;
+    height: 80vh;
+    background-color: var(--grey);
+    padding: 1vmin;
+    border: 2px solid var(--light);
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    grid-template-rows: 12% 88%;
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+}
+
+.expanded svg {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 4vmin;
+    margin-top: 2vmin;
+}
+
+.expanded .closeButton {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 6vmin;
+    text-align: center;
+    color: var(--orange);
+}
+
+.expanded h1 {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 5vmin;
+    color: var(--light);
+    border-bottom: 1px solid var(--light);
+    font-style: italic;
+    margin-top: 2vmin;
+}
+
+.expanded p {
+    grid-column: 1/ span 3;
+    grid-row: 2;
+    max-width: 95%;
+    padding: 0 2vmin 5vmin 2vmin;
+    font-size: 3vmin;
+    margin: 1em auto;
+}
